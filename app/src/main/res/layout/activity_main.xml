@@ -2,14 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
         android:autoLink="web"
         android:text="http://androidSRC.net/"
         android:textStyle="bold" />
@@ -26,6 +26,17 @@
         android:layout_height="wrap_content"
         android:hint="Server port number" />
 
+    <EditText
+        android:id="@+id/messageEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Message" />
+
+    <TextView
+        android:id="@+id/responseTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <Button
         android:id="@+id/connectButton"
         android:layout_width="match_parent"
@@ -38,10 +49,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Clear" />
-
-    <TextView
-        android:id="@+id/responseTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
 </LinearLayout>

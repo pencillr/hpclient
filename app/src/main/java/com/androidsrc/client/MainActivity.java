@@ -11,7 +11,7 @@ import android.widget.TextView;
 public class MainActivity extends Activity {
 
 	TextView response;
-	EditText editTextAddress, editTextPort;
+	EditText editTextAddress, editTextPort, editTextMessage;
 	Button buttonConnect, buttonClear;
 
 	@Override
@@ -21,6 +21,7 @@ public class MainActivity extends Activity {
 
 		editTextAddress = (EditText) findViewById(R.id.addressEditText);
 		editTextPort = (EditText) findViewById(R.id.portEditText);
+		editTextMessage = (EditText) findViewById(R.id.messageEditText);
 		buttonConnect = (Button) findViewById(R.id.connectButton);
 		buttonClear = (Button) findViewById(R.id.clearButton);
 		response = (TextView) findViewById(R.id.responseTextView);
@@ -31,7 +32,7 @@ public class MainActivity extends Activity {
 			public void onClick(View arg0) {
 				Client myClient = new Client(editTextAddress.getText()
 						.toString(), Integer.parseInt(editTextPort
-						.getText().toString()), response);
+						.getText().toString()), editTextMessage.getText().toString(), response);
 				myClient.execute();
 			}
 		});
