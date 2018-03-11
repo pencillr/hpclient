@@ -13,13 +13,14 @@ public class Client extends AsyncTask<Void, Void, Void> {
 
 	String dstAddress;
 	int dstPort;
+	String Message;
 	//String response = "";
 	//TextView textResponse;
-	String Message;
 
-	Client(String addr, int port, String message, TextView textResponse) {
-		dstAddress = addr;
-		dstPort = port;
+
+	Client(String message) {
+		dstAddress = "192.168.1.27";
+		dstPort = 5000;
 		Message = message;
 		//this.textResponse=textResponse;
 	}
@@ -30,8 +31,8 @@ public class Client extends AsyncTask<Void, Void, Void> {
 		Socket socket = null;
 
 		try {
-			socket = new Socket(dstAddress, dstPort);
 
+			socket = new Socket(dstAddress, dstPort);
 			//ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream(
 			//		1024);
 			//byte[] buffer = new byte[1024];
