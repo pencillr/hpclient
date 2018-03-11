@@ -20,6 +20,12 @@
         android:layout_height="wrap_content"
         android:hint="Name" />
 
+    <EditText
+        android:id="@+id/wandEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Wand ID" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"

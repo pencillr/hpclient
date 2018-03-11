@@ -14,10 +14,6 @@
         android:text="Report Cast"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/responseTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/messageEditText"
@@ -43,6 +39,12 @@
         android:autoLink="web"
         android:text="Cast Spell"
         android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/castWandEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Wand ID" />
 
     <RadioGroup
             android:layout_width="wrap_content"
@@ -75,5 +77,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Send" />
+
+    <TextView
+        android:id="@+id/responseTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

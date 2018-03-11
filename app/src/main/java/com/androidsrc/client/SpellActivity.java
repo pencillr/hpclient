@@ -13,7 +13,7 @@ import android.widget.TextView;
 public class SpellActivity extends Activity {
 
 	TextView response;
-	EditText editTextMessage;
+	EditText editTextMessage, editCastWandId;
 	Button buttonConnect, buttonConnectTwo;
 	RadioGroup radioSpellGroup;
 	String myCast;
@@ -24,6 +24,7 @@ public class SpellActivity extends Activity {
 		setContentView(R.layout.activity_spell);
 
 		editTextMessage = (EditText) findViewById(R.id.messageEditText);
+		editCastWandId = (EditText) findViewById(R.id.castWandEditText);
 		buttonConnect = (Button) findViewById(R.id.connectButton);
 		buttonConnectTwo = (Button) findViewById(R.id.connectButton2);
 		response = (TextView) findViewById(R.id.responseTextView);
@@ -34,13 +35,13 @@ public class SpellActivity extends Activity {
 			public void onCheckedChanged(RadioGroup group, int checkedId) {
 				switch(checkedId){
 					case R.id.radioLumos:
-						myCast = "lumos";
+						myCast = "spell_" + editCastWandId.getText().toString() + "_lumos";
 						break;
 					case R.id.radioStupor:
-						myCast = "stupor";
+						myCast = "spell_" + editCastWandId.getText().toString() + "_stupor";
 						break;
 					case R.id.radioAloho:
-						myCast = "aloho";
+						myCast = "spell_" + editCastWandId.getText().toString() + "_alohomora";
 						break;
 				}
 			}
@@ -50,7 +51,7 @@ public class SpellActivity extends Activity {
 
 			@Override
 			public void onClick(View arg0) {
-				Client myClient = new Client(editTextMessage.getText().toString());
+				Client myClient = new Client(editTextMessage.getText().toString(), response);
 				myClient.execute();
 			}
 		});
@@ -58,7 +59,7 @@ public class SpellActivity extends Activity {
 
 			@Override
 			public void onClick(View arg0) {
-				Client myClient = new Client(myCast);
+				Client myClient = new Client(myCast, response);
 				myClient.execute();
 			}
 		});

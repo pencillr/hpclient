@@ -13,7 +13,7 @@ import android.widget.TextView;
 public class MainActivity extends Activity {
 
 	TextView response;
-	EditText editTextName;
+	EditText editTextName, editWandId;
 	Button buttonRegister;
 	Switch lumos, stupor, aloho;
 	String MyAddress;
@@ -27,6 +27,7 @@ public class MainActivity extends Activity {
 		MyAddress = "192.168.1.27";
 		port = 5000;
 		editTextName = (EditText) findViewById(R.id.nameEditText);
+		editWandId = (EditText) findViewById(R.id.wandEditText);
 		lumos = (Switch) findViewById(R.id.lumoSwitch);
 		stupor = (Switch) findViewById(R.id.stuporSwitch);
 		aloho = (Switch) findViewById(R.id.alohoSwitch);
@@ -38,8 +39,9 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				String regMessage = registerMessage(editTextName.getText().toString(),
+                        editWandId.getText().toString(),
 						lumos.isChecked(), stupor.isChecked(), aloho.isChecked());
-				Client myClient = new Client(regMessage);
+				Client myClient = new Client(regMessage, response);
 				myClient.execute();
                 Intent intent = new Intent(MainActivity.this, SpellActivity.class);
                 startActivity(intent);
@@ -47,18 +49,31 @@ public class MainActivity extends Activity {
 		});
 	}
 
-	protected String registerMessage(String name, boolean lumos, boolean stupor, boolean aloho) {
+	protected String registerMessage(String name, String wand, boolean lumos, boolean stupor, boolean aloho) {
 		String regMessage = name;
+		String wandId = wand;
+		regMessage = "reg_" + regMessage;
+		regMessage += '_';
+		regMessage += wandId;
 		regMessage += '_';
 		if(lumos) {
 			regMessage += 'l';
 		}
+		else{
+		    regMessage += '0';
+        }
 		if(stupor) {
 			regMessage += 's';
 		}
+        else{
+            regMessage += '0';
+        }
 		if(aloho) {
 			regMessage += 'a';
 		}
+        else{
+            regMessage += '0';
+        }
 		return regMessage;
 	}
 
